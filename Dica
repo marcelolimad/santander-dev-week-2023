@@ -1,0 +1,17 @@
+Criar um Dockerfile
+
+Depois
+
+FROM openjdk:17
+ADD ./docker-spring-boot.jar docker-spring-boot.jar
+ENTRYPOINT ["java", "-jar", "docker-spring-boot.jar"]
+
+depois maven/Executar Maven Goal
+
+comandos mvn clean depois mvn install
+
+depois copiar para raiz do projeto o arquivo: docker-spring-boot.jar
+
+link youtube tuturial  https://www.youtube.com/watch?v=tSyzZbIE3WU
+
+titulo: How to deploy a Maven Spring Boot Tomcat application to railway.app
