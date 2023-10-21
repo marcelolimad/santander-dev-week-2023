@@ -1,11 +1,8 @@
 package me.project.domain.controller;
 
-import me.project.domain.model.Endereco;
 import me.project.domain.model.User;
 import me.project.service.UserService;
-import me.project.service.ViaCepService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -25,7 +22,7 @@ public class UserController {
     }
 
 
-    @GetMapping("{/id}")
+    @GetMapping("/{id}")
     public ResponseEntity<User> findById(@PathVariable Long id) {
         var user = userService.findById(id);
         return ResponseEntity.ok(user);
@@ -33,11 +30,11 @@ public class UserController {
     }
 
 
-    @PostMapping("{/id}")
+    @PostMapping
     public ResponseEntity<User> findById(@RequestBody User userToCreate) {
         var userCreate = userService.create(userToCreate);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/id")
+                .path("/{id}")
                 .buildAndExpand(userCreate.getId())
                 .toUri();
         return ResponseEntity.created(location).body(userCreate);
